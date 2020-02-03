@@ -28,6 +28,16 @@ class DbController extends AppController{
 
     }
 
+    public function getDepartment()
+    {
+        $this->autoRender=false;
+        $dept=$this->Departments->find();
+
+        foreach ($dept as $d){
+            echo $d;
+        }
+    }
+
     public function insert()
     {
         $this->connection->insert('students',[
@@ -41,7 +51,7 @@ class DbController extends AppController{
     public function show()
     {
         $this->autoRender=false;
-     $data = $this->connection->exicute("SELECT * FROM students")->fetchAll();
+     $data = $this->connection->exicute("SELECT * FROM students")->fetchAll()->toArray();
 
          print_r($data);
 
